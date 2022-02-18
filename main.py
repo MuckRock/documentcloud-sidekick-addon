@@ -12,6 +12,7 @@ class SideKick(AddOn):
 
     def initialize_sidekick(self, project_id):
         """Initialize the sidekick instance if it does not exist"""
+        self.set_message("Initalizing the SideKick data")
         # create the sidekick on the project
         response = self.client.post(f"projects/{project_id}/sidekick/")
 
@@ -28,15 +29,28 @@ class SideKick(AddOn):
             status = response.json()["status"]
             print(status)
 
+    def parse_project(self, query):
+        """Parse the project ID from the search query"""
+        pattern = re.compile(r"project:[\w-]+-(\d+)")
+        match = query.search(pattern)
+        if not match:
+            return None
+        return int(match.group(1))
+
     def main(self):
         """Initialize SideKick if necessary and run learning routine"""
 
         if "tag_name" not in self.data:
+            self.set_message("Must provide a tag name")
             return
 
         tag_name = self.data["tag_name"]
         initialize = self.data.get("initialize", False)
-        project_id = parse_project(query)
+        project_id = self.parse_project(query)
+
+        if project_id is None:
+            self.set_message("Must provide a project in the query")
+            return
 
         if initialize:
             # allow the user to specify to force initialization
@@ -48,6 +62,7 @@ class SideKick(AddOn):
                 initialize_sidekick(client, project_id)
 
         # do the learning!
+        self.set_message("Starting the learning process")
         response = self.client.post(
             f"projects/{project_id}/sidekick/learn/", data={"tagname": tag_name}
         )
@@ -66,6 +81,8 @@ class SideKick(AddOn):
             response = self.client.get(f"projects/{project_id}/sidekick/")
             status = response.json()["status"]
             print(status)
+
+        self.set_message("Complete")
 
 
 if __name__ == "__main__":

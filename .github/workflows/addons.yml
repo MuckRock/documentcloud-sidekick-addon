@@ -1,10 +1,9 @@
 
-name: Plugins Proof of Concept
-
+name: Add-On Proof of Concept
 on: repository_dispatch
 
 jobs:
-  Run-Plugin:
+  Run-Add-On:
     runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
@@ -22,7 +21,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - name: Install dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi

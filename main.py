@@ -2,6 +2,7 @@
 This Add-On allows for easy calling of SideKick API from DocumentCloud
 """
 
+import re
 import time
 
 from addon import AddOn
@@ -31,8 +32,8 @@ class SideKick(AddOn):
 
     def parse_project(self, query):
         """Parse the project ID from the search query"""
-        pattern = re.compile(r"project:[\w-]+-(\d+)")
-        match = query.search(pattern)
+        pattern = re.compile(r"project:(?:[\w-]+-)?(\d+)")
+        match = pattern.search(query)
         if not match:
             return None
         return int(match.group(1))

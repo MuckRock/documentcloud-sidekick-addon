@@ -46,7 +46,7 @@ class SideKick(AddOn):
 
         tag_name = self.data["tag_name"]
         initialize = self.data.get("initialize", False)
-        project_id = self.parse_project(query)
+        project_id = self.parse_project(self.query)
 
         if project_id is None:
             self.set_message("Must provide a project in the query")

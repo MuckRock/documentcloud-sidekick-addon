@@ -63,7 +63,7 @@ class SideKick(AddOn):
                 response = self.client.get(f"projects/{project_id}/sidekick/")
             except documentcloud.exceptions.DoesNotExistError:
                 # if sidekick instance is not found, we will intialize it
-                initialize_sidekick(client, project_id)
+                self.initialize_sidekick(project_id)
 
         # do the learning!
         self.set_message("Starting the learning process")

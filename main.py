@@ -5,6 +5,8 @@ This Add-On allows for easy calling of SideKick API from DocumentCloud
 import re
 import time
 
+import documentcloud
+
 from addon import AddOn
 
 
@@ -57,8 +59,9 @@ class SideKick(AddOn):
             # allow the user to specify to force initialization
             self.initialize_sidekick(project_id)
         else:
-            response = self.client.get(f"projects/{project_id}/sidekick/")
-            if response.status_code == 404:
+            try:
+                response = self.client.get(f"projects/{project_id}/sidekick/")
+            except documentcloud.exceptions.DoesNotExistError:
                 # if sidekick instance is not found, we will intialize it
                 initialize_sidekick(client, project_id)
 

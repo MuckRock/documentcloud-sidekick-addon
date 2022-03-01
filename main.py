@@ -28,7 +28,7 @@ class SideKick(AddOn):
         while status == "pending":
             # wait one minute before checking again
             time.sleep(30)
-            response = self.client.get(f"projects/{PROJECT_ID}/sidekick/")
+            response = self.client.get(f"projects/{project_id}/sidekick/")
             status = response.json()["status"]
             print(status)
 

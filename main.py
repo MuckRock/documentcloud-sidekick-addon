@@ -6,8 +6,7 @@ import re
 import time
 
 import documentcloud
-
-from addon import AddOn
+from documentcloud.addon import AddOn
 
 
 class SideKick(AddOn):

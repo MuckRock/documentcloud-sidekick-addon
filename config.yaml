@@ -1,0 +1,22 @@
+title: SideKick
+description: >-
+  SideKick is a Machine Learning algorithm to help find interesting documents.
+  To use, first put the documents you would like to analyze in a project.  Then
+  mark some number of them as interesting or not, by setting a key-value pair
+  value to "true" or "false" respectively.  The key's name will be entered in
+  tag name below.  Run this add-on with the project selected to initialize
+  SideKick and analyze the documents.  If you add or remove documents, you may
+  check "Force Initialize" to re-analyze the documents, otherwise that step
+  will be skipped for subsequent runs.  The add-on will then calculate a
+  numeric score for all documents in the project, and store it in a key-value
+  pair.  You may mark more documents as interesting or not and re-run the
+  scoring algorithm as many times as you like.
+type: object
+properties:
+  initialize:
+    title: Force Initialize
+    type: boolean
+  tag_name:
+    title: Tag Name
+    type: string
+required: [tag_name]

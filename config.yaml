@@ -1,22 +1,31 @@
 title: SideKick
 description: >-
-  SideKick is a Machine Learning algorithm to help find interesting documents.
-  To use, first put the documents you would like to analyze in a project.  Then
-  mark some number of them as interesting or not, by setting a key-value pair
-  value to "true" or "false" respectively.  The key's name will be entered in
-  tag name below.  Run this add-on with the project selected to initialize
-  SideKick and analyze the documents.  If you add or remove documents, you may
-  check "Force Initialize" to re-analyze the documents, otherwise that step
-  will be skipped for subsequent runs.  The add-on will then calculate a
-  numeric score for all documents in the project, and store it in a key-value
-  pair.  You may mark more documents as interesting or not and re-run the
-  scoring algorithm as many times as you like.
+  SideKick is machine learning tool designed to help you quickly test ways to
+  categorize large documents sets, apply machine learning to try to sort
+  documents into one set or another, and get feedback on how well the model
+  works. We're working on launching an improved, real-time graphical
+  categorization tool, but in the meantime, this Add-On will let you get
+  started.
+
+
+  Step 1: Select a project on the left-hand sidebar before running this Add-On.
+  If you need to, click "Cancel," select a project, and start SideKick again.
+
+
+  Step 2: Use DocumentCloud's "Edit->Edit Document Data" feature to add a key
+  value pair with the category you want, with about five examples of
+  documents that match a category and five that don't. For example, you might
+  add a key of "Email" with five documents set to "True" and five set to
+  "False". Since "Email" is the value you're training on, set it as the
+  "Value to Train" below. SideKick is a binary classifier — it will try to
+  rank all documents on a spectrum from -1 to 1 based on how likely it believe
+  the document is to be that value.
 type: object
 properties:
+  tag_name:
+    title: Value to Train
+    type: string
   initialize:
     title: Force Initialize
     type: boolean
-  tag_name:
-    title: Tag Name
-    type: string
 required: [tag_name]

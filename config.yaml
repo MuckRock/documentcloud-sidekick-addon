@@ -9,11 +9,13 @@ description: >-
 
 
   # Step 1:
+
   Select a project on the left-hand sidebar before running this Add-On.
   If you need to, click *Cancel*, select a project, and start SideKick again.
 
 
   # Step 2:
+
   Use DocumentCloud's *Edit->Edit Document Data* feature to add a key
   value pair with the category you want, with about five examples of
   documents that match a category and five that don't. For example, you might

@@ -21,6 +21,8 @@ description: >-
   rank all documents on a spectrum from -1 to 1 based on how likely it believe
   the document is to be that value.
 type: object
+documents:
+  - query
 properties:
   tag_name:
     title: Value to Train

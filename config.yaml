@@ -4,7 +4,7 @@ description: |
   categorize large documents sets based on semantics, apply machine learning to try to sort
   documents into one set or another, and get feedback on how well the model
   works.
-instructions: >
+instructions: |
   # Step 1:
 
   Select a project on the left-hand sidebar before running this Add-On.

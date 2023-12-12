@@ -5,12 +5,12 @@ description: |
   documents into one set or another, and get feedback on how well the model
   works.
 instructions: |
-  # Step 1:
+  ### Step 1:
 
   Select a project on the left-hand sidebar before running this Add-On.
   If you need to, click *Cancel*, select a project, and start SideKick again.
 
-  # Step 2:
+  ### Step 2:
 
   Use DocumentCloud's *Edit->Edit Document Data* feature to add a key
   value pair with the category you want, with about five examples of
